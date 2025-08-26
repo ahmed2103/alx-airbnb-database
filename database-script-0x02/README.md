@@ -1,0 +1,1 @@
+README file for database seeding script that contains sql seed initial data into table

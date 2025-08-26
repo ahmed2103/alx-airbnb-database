@@ -1,0 +1,1 @@
+README file for database script that contains sql script to create necessary table
