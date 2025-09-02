@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/database-adv-script/aggregations_and_window_functions.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/database-adv-script/joins_queries.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/database-adv-script/partitioning.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/database-adv-script/perfomance.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/database-adv-script/subqueries.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/database-script-0x01/schema.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/database-script-0x02/seed.sql" dialect="MySQL" />
   </component>
 </project>
