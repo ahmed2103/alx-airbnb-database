@@ -1,6 +1,3 @@
--- ORDER BY
-
--- INNER JOIN: Retrieve bookings with user details
 SELECT 
     b.booking_id, 
     b.start_date, 
@@ -14,7 +11,6 @@ FROM
 INNER JOIN 
     users u ON b.user_id = u.user_id;
 
--- LEFT JOIN: Retrieve all properties with their reviews (including properties without reviews)
 SELECT 
     p.property_id, 
     p.name, 
@@ -27,9 +23,7 @@ FROM
 LEFT JOIN 
     reviews r ON p.property_id = r.property_id;
 
--- FULL OUTER JOIN: Retrieve all users and bookings 
--- Note: Not all databases support FULL OUTER JOIN directly
--- This is an emulation using LEFT and RIGHT joins
+
 SELECT 
     u.user_id, 
     u.first_name, 
