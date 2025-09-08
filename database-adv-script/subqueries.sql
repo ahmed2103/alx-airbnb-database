@@ -1,6 +1,33 @@
-select * from properties where property_id in (select property_id from reviews
-                                            group by property_id having avg(rating) >4);
+SELECT
+    p.property_id,
+    p.name,
+    p.location
+FROM
+    Property AS p
+WHERE
+    p.property_id IN (
+        SELECT
+            r.property_id
+        FROM
+            Review AS r
+        GROUP BY
+            r.property_id
+        HAVING
+            AVG(r.rating) > 4.0
+    );
 
-select * from users u where exists(select 1 from bookings b
-                                            where u.user_id = b.user_id
-                                            group by b.user_id having count(b.user_id)>3);
+SELECT
+    u.user_id,
+    u.first_name,
+    u.last_name
+FROM
+    "User" AS u
+WHERE
+    (
+        SELECT
+            COUNT(*)
+        FROM
+            Booking AS b
+        WHERE
+            b.user_id = u.user_id
+    ) > 3;
