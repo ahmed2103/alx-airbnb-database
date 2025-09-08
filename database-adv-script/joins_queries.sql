@@ -1,33 +1,51 @@
+SELECT 
+    b.booking_id, 
+    b.start_date, 
+    b.end_date, 
+    b.total_price, 
+    u.first_name, 
+    u.last_name, 
+    u.email
+FROM 
+    bookings b
+INNER JOIN 
+    users u ON b.user_id = u.user_id;
 
 SELECT 
-    b.id AS booking_id,
-    b.property_id,
-    b.start_date,
-    b.end_date,
-    u.id AS user_id,
-    u.name AS user_name,
-    u.email AS user_email
-FROM bookings b
-INNER JOIN users u ON b.user_id = u.id;
-
-
-SELECT 
-    p.id AS property_id,
-    p.name AS property_name,
-    p.location,
-    r.id AS review_id,
-    r.rating,
+    p.property_id, 
+    p.name, 
+    p.description, 
+    r.review_id, 
+    r.rating, 
     r.comment
-FROM properties p
-LEFT JOIN reviews r ON p.id = r.property_id;
+FROM 
+    properties p
+LEFT JOIN 
+    reviews r ON p.property_id = r.property_id;
 
 
 SELECT 
-    u.id AS user_id,
-    u.name AS user_name,
-    b.id AS booking_id,
-    b.property_id,
-    b.start_date,
+    u.user_id, 
+    u.first_name, 
+    u.last_name, 
+    b.booking_id, 
+    b.start_date, 
     b.end_date
-FROM users u
-FULL OUTER JOIN bookings b ON u.id = b.user_id;
+FROM 
+    users u
+LEFT JOIN 
+    bookings b ON u.user_id = b.user_id
+UNION
+SELECT 
+    u.user_id, 
+    u.first_name, 
+    u.last_name, 
+    b.booking_id, 
+    b.start_date, 
+    b.end_date
+FROM 
+    users u
+RIGHT JOIN 
+    bookings b ON u.user_id = b.user_id
+WHERE 
+    u.user_id IS NULL;
