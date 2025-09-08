@@ -1,5 +1,33 @@
-select * from bookings inner join users on bookings.user_id = users.user_id;
-select * from properties left join reviews on properties.property_id = reviews.property_id;
-select * from bookings  left join users on bookings.user_id = users.user_id
-UNION
-select * from bookings  right join users on bookings.user_id = users.user_id;
+
+SELECT 
+    b.id AS booking_id,
+    b.property_id,
+    b.start_date,
+    b.end_date,
+    u.id AS user_id,
+    u.name AS user_name,
+    u.email AS user_email
+FROM bookings b
+INNER JOIN users u ON b.user_id = u.id;
+
+
+SELECT 
+    p.id AS property_id,
+    p.name AS property_name,
+    p.location,
+    r.id AS review_id,
+    r.rating,
+    r.comment
+FROM properties p
+LEFT JOIN reviews r ON p.id = r.property_id;
+
+
+SELECT 
+    u.id AS user_id,
+    u.name AS user_name,
+    b.id AS booking_id,
+    b.property_id,
+    b.start_date,
+    b.end_date
+FROM users u
+FULL OUTER JOIN bookings b ON u.id = b.user_id;
